@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 Trimax Digital Marketing Agency Website
 
-## Getting Started
+## 🔖 Project Title & Description
+**Trimax** is a digital marketing agency website built with a modern stack.  
+The platform serves as a professional online presence for the agency, showcasing services, portfolio, and blog content.  
+It is designed to highlight brand authority, attract potential clients, and provide an SEO-optimized hub for thought leadership through blog posts.
 
-First, run the development server:
+The site will include the following pages:
+- Home
+- About Us
+- Services
+- Portfolio
+- Blog (fetched from WordPress backend)
+- Contact Us
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
+**Frontend**
+- [Next.js 14+ (App Router)](https://nextjs.org/) with TypeScript
+- [Tailwind CSS](https://tailwindcss.com/) for styling
+- SEO enhancements via [`next-seo`](https://github.com/garmeeh/next-seo) and `next-sitemap`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Backend**
+- [WordPress](https://wordpress.org/) (Headless CMS)
+- [WPGraphQL](https://www.wpgraphql.com/) for structured queries
+- [JWT Authentication](https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/) for secure REST interactions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Development Tools**
+- [Trae](https://trae.ai/) for AI-assisted development
+- [GitHub Actions](https://docs.github.com/en/actions) for CI/CD
+- [Vercel](https://vercel.com/) for frontend deployment
+- Managed WordPress host (e.g., Kinsta, WP Engine, Cloudways) for backend
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🧠 AI Integration Strategy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Code Generation**
+- Use Trae IDE to scaffold Next.js routes, React components, and Tailwind layouts quickly.
+- Generate GraphQL queries and TypeScript types directly from WordPress schema.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Testing**
+- Employ AI-assisted prompt engineering to generate unit tests (React Testing Library, Jest).
+- Use integration tests for GraphQL queries and API routes, generated with AI-guided test cases.
 
-## Deploy on Vercel
+**Documentation**
+- Maintain inline comments and docstrings using AI auto-suggestions.
+- Update `README.md` with AI-curated summaries after feature milestones.
+- Use AI to generate developer onboarding docs and contribution guidelines.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Context-Aware Techniques**
+- Feed API schemas (WPGraphQL introspection JSON) into AI prompts for query generation.
+- Provide AI with directory trees, diffs, and error logs for targeted debugging and refactoring.
+- Leverage AI for structured commit messages and changelog entries.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🚀 Roadmap & Milestones
+1. **Initialize Project**
+   - Create Next.js App Router project with TypeScript.
+   - Configure Tailwind CSS with brand colors:
+     - Primary: `#2d46d6`
+     - Accent: `#b31e37`
+
+2. **Backend Setup**
+   - Deploy WordPress instance.
+   - Install WPGraphQL, ACF, and JWT plugins.
+   - Configure blog posts API exposure.
+
+3. **Frontend Development**
+   - Build static pages (Home, About, Services, Portfolio, Contact).
+   - Implement Blog listing and single post pages with ISR (Incremental Static Regeneration).
+   - Add Contact form API route using Nodemailer or 3rd-party email provider.
+
+4. **SEO & Performance**
+   - Integrate `next-seo` and JSON-LD schemas.
+   - Configure `next-sitemap` and `robots.txt`.
+   - Optimize media with Next.js Image component.
+
+5. **Deployment**
+   - Deploy WordPress to managed host.
+   - Deploy Next.js to Vercel with proper environment variables.
+   - Set up GitHub Actions for lint, build, and test workflows.
+
+6. **Post-Launch**
+   - Monitor analytics via GA4 or Plausible.
+   - Add error tracking with Sentry.
+   - Iterate on UX and content strategy.
+
+---
+
+## 📂 Repository Structure
