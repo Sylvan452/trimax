@@ -1,160 +1,382 @@
-import Image from "next/image";
+import { Metadata } from "next";
+import Link from "next/link";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import ServiceCard from "./components/ServiceCard";
+import BlogCard from "./components/BlogCard";
+import { generateSeoMetadata } from "./components/Seo";
+
+export const metadata: Metadata = generateSeoMetadata({
+  title: "Trimax - Digital Solutions & Web Development",
+  description: "Transform your digital presence with Trimax. We create stunning websites, powerful web applications, and comprehensive digital solutions for modern businesses.",
+  keywords: ["web development", "digital solutions", "web design", "e-commerce", "mobile apps", "UI/UX design"],
+});
+
+// Mock data for featured services and blog posts
+const featuredServices = [
+  {
+    title: "Web Development",
+    description: "Custom websites and web applications built with modern technologies for optimal performance and user experience.",
+    icon: "💻",
+    features: ["React & Next.js", "TypeScript", "Responsive Design", "SEO Optimized"],
+    price: {
+      amount: "2,999",
+      currency: "$",
+      period: "Starting at"
+    },
+    href: "/services#web-development",
+  },
+  {
+    title: "UI/UX Design",
+    description: "Beautiful, intuitive designs that engage users and drive conversions through thoughtful user experience.",
+    icon: "🎨",
+    features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
+    price: {
+      amount: "1,999",
+      currency: "$",
+      period: "Starting at"
+    },
+    href: "/services#ui-ux-design",
+  },
+  {
+    title: "E-commerce Solutions",
+    description: "Complete online stores with secure payments, inventory management, and seamless shopping experiences.",
+    icon: "🛒",
+    features: ["Payment Integration", "Inventory Management", "Analytics", "Mobile Optimized"],
+    price: {
+      amount: "4,999",
+      currency: "$",
+      period: "Starting at"
+    },
+    href: "/services#ecommerce",
+  },
+];
+
+const featuredBlogPosts = [
+  {
+    id: "1",
+    slug: "future-of-web-development-2024",
+    title: "The Future of Web Development: Trends to Watch in 2024",
+    excerpt: "Explore the latest trends shaping the web development landscape, from AI integration to progressive web apps.",
+    author: {
+      name: "Sarah Johnson",
+      avatar: "/images/authors/sarah.jpg",
+      bio: "Senior Full-Stack Developer"
+    },
+    publishedAt: "2024-01-15",
+    readTime: "8 min read",
+    category: "Web Development",
+    tags: ["React", "Next.js", "AI", "PWA"],
+    image: "/images/blog/web-dev-trends-2024.jpg",
+    featured: true,
+  },
+  {
+    id: "2",
+    slug: "designing-for-accessibility-guide",
+    title: "Designing for Accessibility: A Complete Guide",
+    excerpt: "Learn how to create inclusive designs that work for everyone, including users with disabilities.",
+    author: {
+      name: "Michael Chen",
+      avatar: "/images/authors/michael.jpg",
+      bio: "UX/UI Designer"
+    },
+    publishedAt: "2024-01-12",
+    readTime: "12 min read",
+    category: "Design",
+    tags: ["Accessibility", "UX", "Design", "WCAG"],
+    image: "/images/blog/accessibility-guide.jpg",
+    featured: false,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-secondary">
-      {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
-          <h1 className="text-2xl font-bold text-foreground">Trimax</h1>
-        </div>
-      </header>
+    <div className="min-h-screen">
+      <Navbar />
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Hero Section */}
-          <div className="mb-16">
-            <h2 className="text-5xl md:text-7xl font-bold text-foreground mb-6 tracking-tight">
-              Welcome to{" "}
-              <span className="bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">
-                Trimax
+      {/* Hero Section */}
+      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-background via-background to-muted/30 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="absolute top-20 right-20 w-72 h-72 bg-trimax/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+        
+        <div className="container mx-auto px-4 relative">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6 tracking-tight">
+              Transform Your{" "}
+              <span className="bg-gradient-to-r from-trimax to-accent bg-clip-text text-transparent">
+                Digital Presence
               </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+              We create stunning websites, powerful web applications, and comprehensive digital solutions that drive results for modern businesses.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="bg-trimax text-trimax-foreground px-8 py-4 rounded-lg hover:bg-trimax/90 transition-colors duration-200 font-medium text-lg"
+              >
+                Start Your Project
+              </Link>
+              <Link
+                href="/portfolio"
+                className="border border-border text-foreground px-8 py-4 rounded-lg hover:bg-muted transition-colors duration-200 font-medium text-lg"
+              >
+                View Our Work
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { number: "150+", label: "Projects Completed" },
+              { number: "98%", label: "Client Satisfaction" },
+              { number: "5+", label: "Years Experience" },
+              { number: "24/7", label: "Support Available" },
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-trimax mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-muted-foreground">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              Our Services
             </h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-              A modern Next.js application built with TypeScript, Tailwind CSS v4, and the App Router.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              From concept to launch, we provide end-to-end digital solutions tailored to your business needs.
             </p>
           </div>
 
-          {/* Feature Cards */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-card-foreground mb-2">Fast & Modern</h3>
-              <p className="text-muted-foreground">Built with Next.js 15 and React 19 for optimal performance.</p>
-            </div>
-
-            <div className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-card-foreground mb-2">Type Safe</h3>
-              <p className="text-muted-foreground">Full TypeScript support for better development experience.</p>
-            </div>
-
-            <div className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-card-foreground mb-2">Beautiful UI</h3>
-              <p className="text-muted-foreground">Styled with Tailwind CSS v4 and custom design tokens.</p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredServices.map((service, index) => (
+              <ServiceCard
+                key={index}
+                {...service}
+              />
+            ))}
           </div>
 
-          {/* Getting Started */}
-          <div className="bg-muted rounded-lg p-8 mb-16">
-            <h3 className="text-2xl font-semibold text-foreground mb-4">Get Started</h3>
-            <p className="text-muted-foreground mb-6">
-              Edit{" "}
-              <code className="bg-background border border-border px-2 py-1 rounded font-mono text-sm">
-                src/app/page.tsx
-              </code>{" "}
-              to start building your application.
+          <div className="text-center mt-12">
+            <Link
+              href="/services"
+              className="bg-trimax text-trimax-foreground px-8 py-3 rounded-lg hover:bg-trimax/90 transition-colors duration-200 font-medium"
+            >
+              View All Services
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                Why Choose Trimax?
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                We&apos;re not just developers – we&apos;re digital strategists who understand that great technology should serve your business goals. Our team combines technical expertise with creative vision to deliver solutions that make a real impact.
+              </p>
+              
+              <div className="space-y-6">
+                {[
+                  {
+                    title: "Expert Team",
+                    description: "Skilled developers and designers with years of industry experience.",
+                  },
+                  {
+                    title: "Modern Technology",
+                    description: "We use the latest tools and frameworks to build future-proof solutions.",
+                  },
+                  {
+                    title: "Client-Focused",
+                    description: "Your success is our priority. We work closely with you throughout the process.",
+                  },
+                ].map((feature, index) => (
+                  <div key={index} className="flex items-start space-x-4">
+                    <div className="w-6 h-6 bg-trimax rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <svg className="w-3 h-3 text-trimax-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">
+                        {feature.title}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8">
+                <Link
+                  href="/about"
+                  className="text-trimax hover:text-trimax/80 font-medium"
+                >
+                  Learn more about us →
+                </Link>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="w-full h-96 bg-gradient-to-br from-trimax/20 to-accent/20 rounded-2xl flex items-center justify-center">
+                <span className="text-muted-foreground text-lg">Team Photo / Illustration</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Preview */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              Recent Work
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Take a look at some of our recent projects and see how we&apos;ve helped businesses achieve their digital goals.
             </p>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex gap-4 items-center justify-center flex-col sm:flex-row">
-            <a
-              className="flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium"
-              href="https://nextjs.org/docs"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                aria-hidden
-                src="/next.svg"
-                alt="Next.js logo"
-                width={20}
-                height={20}
-              />
-              Next.js Docs
-            </a>
-            <a
-              className="flex items-center gap-2 bg-secondary text-secondary-foreground px-6 py-3 rounded-lg hover:bg-secondary/90 transition-colors font-medium"
-              href="https://tailwindcss.com/docs"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C7.666,17.818,9.027,19.2,12.001,19.2c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"/>
-              </svg>
-              Tailwind Docs
-            </a>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "E-commerce Platform",
+                category: "Web Development",
+                image: "/images/portfolio/ecommerce.jpg",
+                description: "Modern online store with advanced features",
+              },
+              {
+                title: "SaaS Dashboard",
+                category: "UI/UX Design",
+                image: "/images/portfolio/saas.jpg",
+                description: "Clean and intuitive admin interface",
+              },
+              {
+                title: "Corporate Website",
+                category: "Web Development",
+                image: "/images/portfolio/corporate.jpg",
+                description: "Professional business website with CMS",
+              },
+            ].map((project, index) => (
+              <div key={index} className="group cursor-pointer">
+                <div className="w-full h-64 bg-muted rounded-lg mb-4 overflow-hidden">
+                  <div className="w-full h-full bg-gradient-to-br from-trimax/20 to-accent/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                    <span className="text-muted-foreground">{project.title}</span>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <span className="text-sm text-trimax font-medium">
+                    {project.category}
+                  </span>
+                  <h3 className="text-xl font-semibold text-foreground">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground">
+                    {project.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-      </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex gap-6 items-center justify-center flex-wrap">
-            <a
-              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              href="https://nextjs.org/learn"
-              target="_blank"
-              rel="noopener noreferrer"
+          <div className="text-center mt-12">
+            <Link
+              href="/portfolio"
+              className="bg-trimax text-trimax-foreground px-8 py-3 rounded-lg hover:bg-trimax/90 transition-colors duration-200 font-medium"
             >
-              <Image
-                aria-hidden
-                src="/file.svg"
-                alt="File icon"
-                width={16}
-                height={16}
-              />
-              Learn
-            </a>
-            <a
-              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              href="https://vercel.com/templates?framework=next.js"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                aria-hidden
-                src="/window.svg"
-                alt="Window icon"
-                width={16}
-                height={16}
-              />
-              Examples
-            </a>
-            <a
-              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              href="https://nextjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                aria-hidden
-                src="/globe.svg"
-                alt="Globe icon"
-                width={16}
-                height={16}
-              />
-              Go to nextjs.org →
-            </a>
+              View Full Portfolio
+            </Link>
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* Blog Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+              Latest Insights
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Stay updated with the latest trends, tips, and insights from the world of web development and design.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {featuredBlogPosts.map((post) => (
+              <BlogCard
+                key={post.id}
+                {...post}
+                href={`/blog/${post.id}`}
+                variant="horizontal"
+              />
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/blog"
+              className="bg-trimax text-trimax-foreground px-8 py-3 rounded-lg hover:bg-trimax/90 transition-colors duration-200 font-medium"
+            >
+              Read More Articles
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="bg-trimax text-trimax-foreground rounded-2xl p-8 md:p-16 text-center">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Ready to Get Started?
+            </h2>
+            <p className="text-lg md:text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+              Let&apos;s discuss your project and see how we can help bring your vision to life with our expertise and innovative solutions.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="bg-white text-trimax px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors duration-200 font-medium text-lg"
+              >
+                Start Your Project
+              </Link>
+              <Link
+                href="/services"
+                className="border border-white/20 text-trimax-foreground px-8 py-4 rounded-lg hover:bg-white/10 transition-colors duration-200 font-medium text-lg"
+              >
+                Explore Services
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }

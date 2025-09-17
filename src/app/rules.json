@@ -1,0 +1,73 @@
+{
+  "project": "Trimax Digital Marketing Agency Website",
+  "description": "A Next.js + Tailwind CSS frontend with WordPress backend for blog management. Includes Home, About Us, Services, Blog, Portfolio, and Contact pages. Official colors: #2d46d6 and #b31e37.",
+  "rules": [
+    {
+      "id": "frontend-setup",
+      "title": "Setup Next.js + Tailwind CSS frontend",
+      "steps": [
+        "Initialize Next.js project with TypeScript support",
+        "Install and configure Tailwind CSS",
+        "Setup project folder structure: /pages, /components, /styles, /lib",
+        "Configure global styles with official brand colors (#2d46d6, #b31e37)"
+      ],
+      "success_criteria": "Next.js runs locally with Tailwind CSS applied and brand colors available as utilities."
+    },
+    {
+      "id": "backend-setup",
+      "title": "Configure WordPress backend for blog",
+      "steps": [
+        "Install WordPress on hosting or localhost",
+        "Install and configure WPGraphQL or REST API plugin",
+        "Secure WordPress admin and limit functionality to blogging",
+        "Create sample blog posts to test API"
+      ],
+      "success_criteria": "WordPress exposes blog content via API for frontend consumption."
+    },
+    {
+      "id": "integration",
+      "title": "Integrate Next.js frontend with WordPress backend",
+      "steps": [
+        "Connect Next.js frontend to WordPress API using fetch or Apollo Client",
+        "Create dynamic Blog page with post listing",
+        "Build single post template with SEO tags",
+        "Test data flow from WordPress to frontend"
+      ],
+      "success_criteria": "Frontend blog pages display WordPress posts correctly."
+    },
+    {
+      "id": "pages",
+      "title": "Build required static pages",
+      "steps": [
+        "Design and implement Home page with hero section, services preview, and CTA",
+        "Create About Us page with mission and team info",
+        "Create Our Services page with structured cards",
+        "Build Portfolio page with grid layout",
+        "Add Contact Us page with form and email integration"
+      ],
+      "success_criteria": "All required pages render correctly, styled with Tailwind, responsive, and accessible."
+    },
+    {
+      "id": "ai-integration",
+      "title": "Leverage AI throughout development",
+      "steps": [
+        "Use AI to scaffold components, page templates, and API integration code",
+        "Generate Jest/React Testing Library tests with AI prompts",
+        "Draft docstrings and inline documentation using AI",
+        "Feed file diffs or directory trees into AI for context-aware refactoring"
+      ],
+      "success_criteria": "AI accelerates dev tasks without breaking standards or introducing security issues."
+    },
+    {
+      "id": "deployment",
+      "title": "Deploy project to production",
+      "steps": [
+        "Deploy frontend with Vercel or Netlify",
+        "Host WordPress backend securely (e.g., managed WordPress hosting)",
+        "Configure environment variables and API endpoints",
+        "Run final Lighthouse audit for performance and accessibility"
+      ],
+      "success_criteria": "Website live with stable connection to WordPress backend, optimized for SEO and performance."
+    }
+  ]
+}
