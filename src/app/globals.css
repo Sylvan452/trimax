@@ -53,7 +53,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --background: #0a0a0a;
     --foreground: #fafafa;
     --card: #0a0a0a;
@@ -76,6 +76,30 @@
     --trimax: #2d46d6;
     --trimax-foreground: #fafafa;
   }
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #0a0a0a;
+  --card-foreground: #fafafa;
+  --popover: #0a0a0a;
+  --popover-foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #171717;
+  --secondary: #262626;
+  --secondary-foreground: #fafafa;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent: #b31e37;
+  --accent-foreground: #fafafa;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #fafafa;
+  --border: #262626;
+  --input: #262626;
+  --ring: #d4d4d8;
+  --trimax: #2d46d6;
+  --trimax-foreground: #fafafa;
 }
 
 * {
@@ -104,4 +128,42 @@ html {
 ::selection {
   background-color: var(--primary);
   color: var(--primary-foreground);
+}
+
+/* Hide page titles */
+.hide-page-title {
+  display: none !important;
+}
+
+/* Blog content styling */
+.prose {
+  color: #111827 !important;
+}
+
+.prose p,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6,
+.prose span,
+.prose li,
+.prose ul,
+.prose ol,
+.prose blockquote,
+.prose strong,
+.prose em,
+.prose a,
+.prose div {
+  color: #111827 !important;
+}
+
+.prose a {
+  color: #2563eb !important;
+  text-decoration: underline;
+}
+
+.prose a:hover {
+  color: #1d4ed8 !important;
 }

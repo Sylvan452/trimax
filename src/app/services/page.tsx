@@ -257,7 +257,6 @@ export default function ServicesPage() {
         title="Our Services"
         subtitle="What We Do"
         description="We offer comprehensive digital solutions to help your business thrive in the digital landscape. From web development to digital marketing, we've got you covered."
-        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Services' }]}
       />
 
       {/* Services Grid */}
