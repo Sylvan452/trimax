@@ -9,7 +9,6 @@ interface PageHeroProps {
   children?: ReactNode;
   size?: "small" | "medium" | "large";
   alignment?: "left" | "center" | "right";
-  breadcrumbs?: Array<{ label: string; href?: string }>;
 }
 
 export default function PageHero({
@@ -21,7 +20,6 @@ export default function PageHero({
   children,
   size = "medium",
   alignment = "center",
-  breadcrumbs,
 }: PageHeroProps) {
   const sizeClasses = {
     small: "py-16 md:py-20",
@@ -48,41 +46,6 @@ export default function PageHero({
       )}
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Breadcrumbs */}
-        {breadcrumbs && (
-          <nav className="mb-8" aria-label="Breadcrumb">
-            <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
-              {breadcrumbs.map((crumb, index) => (
-                <li key={index} className="flex items-center">
-                  {index > 0 && (
-                    <svg
-                      className="w-4 h-4 mx-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  )}
-                  {crumb.href ? (
-                    <a
-                      href={crumb.href}
-                      className="hover:text-foreground transition-colors"
-                    >
-                      {crumb.label}
-                    </a>
-                  ) : (
-                    <span className="text-foreground">{crumb.label}</span>
-                  )}
-                </li>
-              ))}
-            </ol>
-          </nav>
-        )}
-
         <div className={`max-w-4xl ${alignment === "center" ? "mx-auto" : ""} ${alignmentClasses[alignment]}`}>
           {/* Subtitle */}
           {subtitle && (
@@ -92,7 +55,7 @@ export default function PageHero({
           )}
 
           {/* Title */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+          <h1 className="hide-page-title text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
             {title}
           </h1>
 

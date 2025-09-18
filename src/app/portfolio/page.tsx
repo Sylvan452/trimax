@@ -155,7 +155,6 @@ export default function PortfolioPage() {
         title="Our Portfolio"
         subtitle="Our Work"
         description="Explore our collection of successful projects and see how we've helped businesses achieve their digital goals through innovative solutions."
-        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Portfolio' }]}
       />
 
       {/* Stats Section */}

@@ -113,7 +113,6 @@ export default function AboutPage() {
         title="About Trimax"
         subtitle="Our Story"
         description="We're a passionate team of digital innovators dedicated to helping businesses thrive in the digital age through cutting-edge web solutions and strategic design."
-        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About' }]}
       />
 
       {/* Mission Section */}
