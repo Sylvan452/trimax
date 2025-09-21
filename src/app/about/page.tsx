@@ -1,44 +1,31 @@
-import { Metadata } from 'next';
-import PageHero from '../components/PageHero';
-import { generateSeoMetadata } from '../components/Seo';
+'use client';
 
-export const metadata: Metadata = generateSeoMetadata({
-  title: 'About Us - Trimax',
-  description:
-    'Learn about Trimax, our mission, values, and the talented team behind our innovative digital solutions.',
-  keywords: [
-    'about trimax',
-    'digital agency team',
-    'company mission',
-    'web development team',
-  ],
-  url: 'https://trimax.com/about',
-});
+import AboutHero from '../components/AboutHero';
 
 export default function AboutPage() {
   const teamMembers = [
     {
-      name: 'Sarah Johnson',
+      name: 'Obah Sylva',
       role: 'CEO & Founder',
-      image: '/team/sarah.jpg',
-      bio: '10+ years of experience in digital strategy and business development.',
+      image: '/obah_sylva.jpg',
+      bio: '10+ years of experience in Software Development and digital strategy.',
     },
     {
       name: 'Michael Chen',
       role: 'CTO',
-      image: '/team/michael.jpg',
+      image: '/obah_dev.jpg',
       bio: 'Full-stack developer with expertise in modern web technologies.',
     },
     {
       name: 'Emily Rodriguez',
       role: 'Design Director',
-      image: '/team/emily.jpg',
+      image: '/team.jpg',
       bio: 'Creative designer passionate about user experience and visual storytelling.',
     },
     {
       name: 'David Kim',
       role: 'Lead Developer',
-      image: '/team/david.jpg',
+      image: '/team.jpg',
       bio: 'Senior developer specializing in React, Node.js, and cloud architecture.',
     },
   ];
@@ -109,11 +96,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <PageHero
-        title="About Trimax"
-        subtitle="Our Story"
-        description="We're a passionate team of digital innovators dedicated to helping businesses thrive in the digital age through cutting-edge web solutions and strategic design."
-      />
+      <AboutHero />
 
       {/* Mission Section */}
       <section className="py-20 bg-muted/30">
@@ -180,7 +163,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-muted/30">
+      <section id="team" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -198,13 +181,27 @@ export default function AboutPage() {
                 key={index}
                 className="text-center bg-card rounded-xl p-6 border border-border"
               >
-                <div className="w-24 h-24 bg-muted rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-trimax">
-                    {member.name
-                      .split(' ')
-                      .map((n) => n[0])
-                      .join('')}
-                  </span>
+                <div className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback to initials if image fails to load
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const fallback = target.nextElementSibling as HTMLElement;
+                      if (fallback) fallback.style.display = 'flex';
+                    }}
+                  />
+                  <div className="w-full h-full bg-muted rounded-full flex items-center justify-center" style={{display: 'none'}}>
+                    <span className="text-2xl font-bold text-trimax">
+                      {member.name
+                        .split(' ')
+                        .map((n) => n[0])
+                        .join('')}
+                    </span>
+                  </div>
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-1">
                   {member.name}

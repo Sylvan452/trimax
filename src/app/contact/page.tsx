@@ -6,18 +6,24 @@ import { generateMetadata } from '../components/SeoComponent';
 // Generate metadata using the new SEO component
 export const metadata: Metadata = generateMetadata({
   title: 'Contact Us',
-  description: "Get in touch with Trimax for your digital project needs. We're here to help bring your vision to life with our expert web development and design services.",
+  description:
+    "Get in touch with Trimax for your digital project needs. We're here to help bring your vision to life with our expert web development and design services.",
   canonicalUrl: '/contact',
-  keywords: ['contact', 'web development', 'digital agency', 'project inquiry', 'consultation'],
+  keywords: [
+    'contact',
+    'web development',
+    'digital agency',
+    'project inquiry',
+    'consultation',
+  ],
   type: 'website',
 });
 
 export default function ContactPage() {
-
   const contactInfo = [
     {
       title: 'Email',
-      value: 'hello@trimax.com',
+      value: 'info@trimax.com',
       icon: (
         <svg
           className="w-6 h-6"
@@ -36,7 +42,7 @@ export default function ContactPage() {
     },
     {
       title: 'Phone',
-      value: '+1 (555) 123-4567',
+      value: '+234 8060102368',
       icon: (
         <svg
           className="w-6 h-6"
@@ -55,7 +61,7 @@ export default function ContactPage() {
     },
     {
       title: 'Address',
-      value: '123 Business Ave, Suite 100\nNew York, NY 10001',
+      value: 'Plot 506 Oladipo Diya Street, Abuja, FCT, Nigeria.',
       icon: (
         <svg
           className="w-6 h-6"
@@ -80,7 +86,7 @@ export default function ContactPage() {
     },
     {
       title: 'Business Hours',
-      value: 'Monday - Friday\n9:00 AM - 6:00 PM EST',
+      value: 'Monday - Friday\n8:00 AM - 6:00 PM WAT',
       icon: (
         <svg
           className="w-6 h-6"
@@ -101,12 +107,24 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen">
+      {/* Main Heading Section */}
+      <section className="relative py-20 bg-gradient-to-br from-background via-background to-primary/5">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6">
+            Get In{' '}
+            <span className="bg-gradient-to-r from-trimax to-accent bg-clip-text text-transparent">
+              Touch
+            </span>
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Ready to start your next project? We&apos;d love to hear from you.
+            Send us a message and we&apos;ll respond as soon as possible.
+          </p>
+        </div>
+      </section>
+
       {/* Hero Section */}
-      <PageHero
-        title="Contact Us"
-        subtitle="Get In Touch"
-        description="Ready to start your next project? We'd love to hear from you. Send us a message and we'll respond as soon as possible."
-      />
+      <PageHero title="Contact Us" subtitle="" description="" />
 
       {/* Contact Section */}
       <section className="py-20">
@@ -155,10 +173,16 @@ export default function ContactPage() {
                 </h3>
                 <div className="flex space-x-4">
                   {[
-                    { name: 'Twitter', href: '#' },
-                    { name: 'LinkedIn', href: '#' },
-                    { name: 'GitHub', href: '#' },
-                    { name: 'Instagram', href: '#' },
+                    { name: 'Twitter', href: 'https://x.com/sylvan452' },
+                    {
+                      name: 'LinkedIn',
+                      href: 'https://www.linkedin.com/in/sylvan452/',
+                    },
+                    { name: 'GitHub', href: 'https://github.com/sylvan452' },
+                    {
+                      name: 'Instagram',
+                      href: 'https://www.instagram.com/trimaxfashion/',
+                    },
                   ].map((social, index) => (
                     <a
                       key={index}
@@ -196,7 +220,7 @@ export default function ContactPage() {
               {
                 question: 'How long does a typical project take?',
                 answer:
-                  "Project timelines vary depending on complexity and scope. A simple website typically takes 2-4 weeks, while complex web applications can take 2-6 months. We'll provide a detailed timeline during our initial consultation.",
+                  "Project timelines vary depending on complexity and scope. A simple website typically takes 2-4 weeks, while complex web applications can take 1-6 months. We'll provide a detailed timeline during our initial consultation.",
               },
               {
                 question: 'Do you provide ongoing support and maintenance?',

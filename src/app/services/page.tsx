@@ -252,12 +252,25 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen">
+      {/* Main Heading Section */}
+      <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
+            What We{' '}
+            <span className="bg-gradient-to-r from-trimax to-accent bg-clip-text text-transparent">
+              Do
+            </span>
+          </h1>
+          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
+            We offer comprehensive digital solutions to help your business
+            thrive in the digital landscape. From web development to digital
+            marketing, we&apos;ve got you covered.
+          </p>
+        </div>
+      </section>
+
       {/* Hero Section */}
-      <PageHero
-        title="Our Services"
-        subtitle="What We Do"
-        description="We offer comprehensive digital solutions to help your business thrive in the digital landscape. From web development to digital marketing, we've got you covered."
-      />
+      <PageHero title="Our Services" description="" />
 
       {/* Services Grid */}
       <section className="py-20">
