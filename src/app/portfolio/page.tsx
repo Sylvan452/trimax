@@ -24,7 +24,7 @@ export default function PortfolioPage() {
       title: 'E-commerce Platform',
       description:
         'A modern e-commerce platform built with Next.js and Stripe integration, featuring advanced product filtering, wishlist functionality, and seamless checkout experience.',
-      image: '/portfolio/ecommerce.jpg',
+      image: '/mega.jpg',
       category: 'E-commerce',
       tags: ['Next.js', 'Stripe', 'Tailwind CSS', 'PostgreSQL'],
       href: '#',
@@ -37,7 +37,7 @@ export default function PortfolioPage() {
       title: 'SaaS Analytics Dashboard',
       description:
         'A comprehensive analytics dashboard for a SaaS platform with real-time data visualization, user management, and subscription handling.',
-      image: '/portfolio/dashboard.jpg',
+      image: '/saas.jpg',
       category: 'Web App',
       tags: ['React', 'D3.js', 'Node.js', 'MongoDB'],
       href: '#',
@@ -49,7 +49,7 @@ export default function PortfolioPage() {
       title: 'Restaurant Website',
       description:
         'A beautiful restaurant website with online reservation system, menu showcase, and location finder with integrated Google Maps.',
-      image: '/portfolio/restaurant.jpg',
+      image: '/resturant.jpg',
       category: 'Website',
       tags: ['WordPress', 'PHP', 'MySQL', 'Google Maps API'],
       href: '#',
@@ -61,7 +61,7 @@ export default function PortfolioPage() {
       title: 'Fitness Mobile App',
       description:
         'A cross-platform mobile app for fitness tracking with workout plans, progress monitoring, and social features for motivation.',
-      image: '/portfolio/mobile-app.jpg',
+      image: '/fitness.jpg',
       category: 'Mobile App',
       tags: ['React Native', 'Firebase', 'Redux', 'Expo'],
       href: '#',
@@ -74,7 +74,7 @@ export default function PortfolioPage() {
       title: 'Corporate Website',
       description:
         'A professional corporate website with multi-language support, content management system, and integrated blog platform.',
-      image: '/portfolio/corporate.jpg',
+      image: '/websit.jpg',
       category: 'Website',
       tags: ['Next.js', 'Sanity CMS', 'i18n', 'Vercel'],
       href: '#',
@@ -86,7 +86,7 @@ export default function PortfolioPage() {
       title: 'Artist Portfolio',
       description:
         'A stunning portfolio website for a digital artist featuring image galleries, contact forms, and social media integration.',
-      image: '/portfolio/artist.jpg',
+      image: '/artist.jpg',
       category: 'Portfolio',
       tags: ['Gatsby', 'GraphQL', 'Netlify', 'Instagram API'],
       href: '#',
@@ -150,12 +150,25 @@ export default function PortfolioPage() {
 
   return (
     <div className="min-h-screen">
+      {/* Main Heading Section */}
+      <section className="relative py-20 bg-gradient-to-br from-background via-background to-primary/5">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6">
+            Our{' '}
+            <span className="bg-gradient-to-r from-trimax to-accent bg-clip-text text-transparent">
+              Work
+            </span>
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Explore our collection of successful projects and see how we&apos;ve
+            helped businesses achieve their digital goals through innovative
+            solutions.
+          </p>
+        </div>
+      </section>
+
       {/* Hero Section */}
-      <PageHero
-        title="Our Portfolio"
-        subtitle="Our Work"
-        description="Explore our collection of successful projects and see how we've helped businesses achieve their digital goals through innovative solutions."
-      />
+      <PageHero title="Our Portfolio" subtitle="" description="" />
 
       {/* Stats Section */}
       <section className="py-20 bg-muted/30">

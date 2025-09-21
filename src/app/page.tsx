@@ -1,9 +1,45 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import ServiceCard from './components/ServiceCard';
 import BlogCard from './components/BlogCard';
 import HeroSection from './components/HeroSection';
 import { generateSeoMetadata } from './components/Seo';
+import { fetchPublicData } from '@/lib/api';
+import { GET_RECENT_POSTS } from '@/lib/queries';
+
+// Interface for WordPress blog posts
+interface WordPressBlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  date: string;
+  featuredImage?: {
+    node: {
+      sourceUrl: string;
+      altText: string;
+    };
+  };
+}
+
+interface RecentPostsData {
+  posts: {
+    nodes: WordPressBlogPost[];
+  };
+}
+
+// Function to fetch recent blog posts
+async function getRecentBlogPosts(): Promise<WordPressBlogPost[]> {
+  try {
+    const data = await fetchPublicData<RecentPostsData>(GET_RECENT_POSTS, {
+      first: 2,
+    });
+    return data.posts.nodes;
+  } catch (error) {
+    console.error('Error fetching recent blog posts:', error);
+    return [];
+  }
+}
 
 export const metadata: Metadata = generateSeoMetadata({
   title: 'Trimax - Digital Solutions & Web Development',
@@ -80,7 +116,7 @@ const featuredBlogPosts = [
     excerpt:
       'Explore the latest trends shaping the web development landscape, from AI integration to progressive web apps.',
     author: {
-      name: 'Sarah Johnson',
+      name: 'Obah Sylva',
       avatar: '/images/authors/sarah.jpg',
       bio: 'Senior Full-Stack Developer',
     },
@@ -111,7 +147,9 @@ const featuredBlogPosts = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  // Fetch recent blog posts
+  const recentPosts = await getRecentBlogPosts();
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -240,10 +278,12 @@ export default function Home() {
             </div>
 
             <div className="relative">
-              <div className="w-full h-96 bg-gradient-to-br from-trimax/20 to-accent/20 rounded-2xl flex items-center justify-center">
-                <span className="text-muted-foreground text-lg">
-                  Team Photo / Illustration
-                </span>
+              <div className="w-full h-96 rounded-2xl overflow-hidden">
+                <img
+                  src="/team.jpg"
+                  alt="Trimax Team"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -268,29 +308,31 @@ export default function Home() {
               {
                 title: 'E-commerce Platform',
                 category: 'Web Development',
-                image: '/images/portfolio/ecommerce.jpg',
+                image: '/mega.jpg',
                 description: 'Modern online store with advanced features',
               },
               {
                 title: 'SaaS Dashboard',
                 category: 'UI/UX Design',
-                image: '/images/portfolio/saas.jpg',
+                image: '/saas.jpg',
                 description: 'Clean and intuitive admin interface',
               },
               {
                 title: 'Corporate Website',
                 category: 'Web Development',
-                image: '/images/portfolio/corporate.jpg',
+                image: '/websit.jpg',
                 description: 'Professional business website with CMS',
               },
             ].map((project, index) => (
               <div key={index} className="group cursor-pointer">
-                <div className="w-full h-64 bg-muted rounded-lg mb-4 overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-trimax/20 to-accent/20 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                    <span className="text-muted-foreground">
-                      {project.title}
-                    </span>
-                  </div>
+                <div className="w-full h-64 bg-muted rounded-lg mb-4 overflow-hidden relative">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
                 </div>
                 <div className="space-y-2">
                   <span className="text-sm text-trimax font-medium">
@@ -330,14 +372,33 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {featuredBlogPosts.map((post) => (
-              <BlogCard
-                key={post.id}
-                {...post}
-                href={`/blog/${post.id}`}
-                variant="horizontal"
-              />
-            ))}
+            {recentPosts.length > 0
+              ? recentPosts.map((post) => (
+                  <BlogCard
+                    key={post.id}
+                    title={post.title}
+                    excerpt="Stay updated with our latest insights and industry trends."
+                    image={post.featuredImage?.node.sourceUrl}
+                    author={{
+                      name: 'Trimax Team',
+                      avatar: '/team.jpg',
+                    }}
+                    publishedAt={new Date(post.date).toLocaleDateString()}
+                    readTime="5 min read"
+                    category="Insights"
+                    href={`/blog/${post.slug}`}
+                    variant="horizontal"
+                  />
+                ))
+              : // Fallback to static posts if API fails
+                featuredBlogPosts.map((post) => (
+                  <BlogCard
+                    key={post.id}
+                    {...post}
+                    href={`/blog/${post.slug}`}
+                    variant="horizontal"
+                  />
+                ))}
           </div>
 
           <div className="text-center mt-12">
