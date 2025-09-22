@@ -4,7 +4,7 @@ import ServiceCard from '../components/ServiceCard';
 import { generateSeoMetadata } from '../components/Seo';
 
 export const metadata: Metadata = generateSeoMetadata({
-  title: 'Services - Trimax',
+  title: 'Services - Trimax Media',
   description:
     'Explore our comprehensive digital services including web development, UI/UX design, e-commerce solutions, and digital marketing.',
   keywords: [
@@ -12,9 +12,9 @@ export const metadata: Metadata = generateSeoMetadata({
     'ui ux design',
     'e-commerce',
     'digital marketing',
-    'trimax services',
+    'trimax media services',
   ],
-  url: 'https://trimax.com/services',
+  url: 'https://trimax-media.com/services',
 });
 
 export default function ServicesPage() {

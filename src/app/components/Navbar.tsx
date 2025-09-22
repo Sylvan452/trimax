@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
@@ -21,11 +22,16 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-trimax rounded-lg flex items-center justify-center">
-              <span className="text-trimax-foreground font-bold text-lg">T</span>
+          <Link href="/" className="flex items-center">
+            <div className="relative" style={{ width: '120px', height: '120px' }}>
+              <Image
+                src="/Trimax_Media_Logo.png"
+                alt="Trimax Media Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <span className="text-xl font-bold text-foreground">Trimax</span>
           </Link>
 
           {/* Desktop Navigation */}

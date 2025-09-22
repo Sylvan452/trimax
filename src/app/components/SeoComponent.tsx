@@ -22,15 +22,15 @@ export function generateMetadata({
   keywords = [],
   image = '/og-image.jpg',
   type = 'website',
-  author = 'Trimax Team',
+  author = 'Trimax Media Team',
 }: SeoComponentProps): Metadata {
-  const siteName = 'Trimax';
+  const siteName = 'Trimax Media';
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
   
   // Ensure canonicalUrl is absolute
   const absoluteCanonicalUrl = canonicalUrl.startsWith('http') 
     ? canonicalUrl 
-    : `https://trimax.com${canonicalUrl}`;
+    : `https://trimax-media.com${canonicalUrl}`;
 
   return {
     title: fullTitle,
@@ -59,7 +59,7 @@ export function generateMetadata({
       siteName,
       images: [
         {
-          url: image.startsWith('http') ? image : `https://trimax.com${image}`,
+          url: image.startsWith('http') ? image : `https://trimax-media.com${image}`,
           width: 1200,
           height: 630,
           alt: title,
@@ -70,9 +70,9 @@ export function generateMetadata({
       card: 'summary_large_image',
       title: fullTitle,
       description,
-      images: [image.startsWith('http') ? image : `https://trimax.com${image}`],
-      creator: '@trimax',
-      site: '@trimax',
+      images: [image.startsWith('http') ? image : `https://trimax-media.com${image}`],
+      creator: '@trimax_media',
+      site: '@trimax_media',
     },
     alternates: {
       canonical: absoluteCanonicalUrl,
@@ -105,11 +105,11 @@ export default function SeoComponent({
     '@type': 'WebPage',
     name: title,
     description,
-    url: canonicalUrl.startsWith('http') ? canonicalUrl : `https://trimax.com${canonicalUrl}`,
+    url: canonicalUrl.startsWith('http') ? canonicalUrl : `https://trimax-media.com${canonicalUrl}`,
     isPartOf: {
       '@type': 'WebSite',
-      name: 'Trimax',
-      url: 'https://trimax.com',
+      name: 'Trimax Media',
+        url: 'https://trimax-media.com',
     },
     ...jsonLd,
   };

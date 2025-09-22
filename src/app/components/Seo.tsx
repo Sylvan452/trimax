@@ -13,17 +13,17 @@ interface SeoProps {
 }
 
 export function generateSeoMetadata({
-  title = "Trimax - Modern Digital Agency",
+  title = "Trimax Media - Modern Digital Agency",
   description = "A modern digital agency providing innovative solutions for your business needs. We specialize in web development, design, and digital marketing.",
-  keywords = ["digital agency", "web development", "design", "marketing", "trimax"],
+  keywords = ["digital agency", "web development", "design", "marketing", "trimax media"],
   image = "/og-image.jpg",
-  url = "https://trimax.com",
+  url = "https://trimax-media.com",
   type = "website",
   publishedTime,
   modifiedTime,
-  author = "Trimax Team",
+  author = "Trimax Media Team",
 }: SeoProps = {}): Metadata {
-  const siteName = "Trimax";
+  const siteName = "Trimax Media";
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 
   return {
@@ -70,8 +70,8 @@ export function generateSeoMetadata({
       title: fullTitle,
       description,
       images: [image],
-      creator: "@trimax",
-      site: "@trimax",
+      creator: "@trimax_media",
+      site: "@trimax_media",
     },
     alternates: {
       canonical: url,
@@ -96,9 +96,9 @@ export function JsonLd({ type = "Organization", data = {} }: JsonLdProps) {
     Organization: {
       "@context": "https://schema.org",
       "@type": "Organization",
-      name: "Trimax",
-      url: "https://trimax.com",
-      logo: "https://trimax.com/logo.png",
+      name: "Trimax Media",
+        url: "https://trimax-media.com",
+        logo: "https://trimax-media.com/logo.png",
       description: "A modern digital agency providing innovative solutions for your business needs.",
       address: {
         "@type": "PostalAddress",
@@ -110,20 +110,20 @@ export function JsonLd({ type = "Organization", data = {} }: JsonLdProps) {
         contactType: "customer service",
       },
       sameAs: [
-        "https://twitter.com/trimax",
-        "https://linkedin.com/company/trimax",
-        "https://github.com/trimax",
-      ],
+          "https://twitter.com/trimax_media",
+          "https://linkedin.com/company/trimax_media",
+          "https://github.com/trimax_media",
+        ],
     },
     WebSite: {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      name: "Trimax",
-      url: "https://trimax.com",
+      name: "Trimax Media",
+            url: "https://trimax-media.com",
       description: "A modern digital agency providing innovative solutions for your business needs.",
       potentialAction: {
         "@type": "SearchAction",
-        target: "https://trimax.com/search?q={search_term_string}",
+        target: "https://trimax-media.com/search?q={search_term_string}",
         "query-input": "required name=search_term_string",
       },
     },
@@ -132,8 +132,8 @@ export function JsonLd({ type = "Organization", data = {} }: JsonLdProps) {
       "@type": "Article",
       publisher: {
         "@type": "Organization",
-        name: "Trimax",
-        url: "https://trimax.com",
+        name: "Trimax Media",
+        url: "https://trimax-media.com",
       },
     },
     Product: {
@@ -141,7 +141,7 @@ export function JsonLd({ type = "Organization", data = {} }: JsonLdProps) {
       "@type": "Product",
       brand: {
         "@type": "Brand",
-        name: "Trimax",
+        name: "Trimax Media",
       },
     },
   };
@@ -157,6 +157,6 @@ export function JsonLd({ type = "Organization", data = {} }: JsonLdProps) {
 }
 
 // Default SEO component for pages
-export default function Seo(props: SeoProps) {
+export default function Seo() {
   return <JsonLd type="Organization" />;
 }

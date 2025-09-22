@@ -7,7 +7,7 @@ import { generateMetadata } from '../components/SeoComponent';
 export const metadata: Metadata = generateMetadata({
   title: 'Contact Us',
   description:
-    "Get in touch with Trimax for your digital project needs. We're here to help bring your vision to life with our expert web development and design services.",
+    "Get in touch with Trimax Media for your digital project needs. We're here to help bring your vision to life with our expert web development and design services.",
   canonicalUrl: '/contact',
   keywords: [
     'contact',
@@ -23,7 +23,7 @@ export default function ContactPage() {
   const contactInfo = [
     {
       title: 'Email',
-      value: 'info@trimax.com',
+      value: 'info@trimax-media.com',
       icon: (
         <svg
           className="w-6 h-6"
@@ -181,7 +181,7 @@ export default function ContactPage() {
                     { name: 'GitHub', href: 'https://github.com/sylvan452' },
                     {
                       name: 'Instagram',
-                      href: 'https://www.instagram.com/trimaxfashion/',
+                      href: 'https://www.instagram.com/trimaxmedia/',
                     },
                   ].map((social, index) => (
                     <a

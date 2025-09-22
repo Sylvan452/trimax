@@ -1,7 +1,7 @@
-# 🌐 Trimax Digital Marketing Agency Website
+# 🌐 Trimax Media Digital Marketing Agency Website
 
 ## 🔖 Project Title & Description
-**Trimax** is a digital marketing agency website built with a modern stack.  
+**Trimax Media** is a digital marketing agency website built with a modern stack.  
 The platform serves as a professional online presence for the agency, showcasing services, portfolio, and blog content.  
 It is designed to highlight brand authority, attract potential clients, and provide an SEO-optimized hub for thought leadership through blog posts.
 

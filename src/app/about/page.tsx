@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import AboutHero from '../components/AboutHero';
 
 export default function AboutPage() {
@@ -106,7 +107,7 @@ export default function AboutPage() {
               Our Mission
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              At Trimax, we believe that exceptional digital experiences have
+              At Trimax Media, we believe that exceptional digital experiences have
               the power to transform businesses. Our mission is to bridge the
               gap between innovative technology and meaningful human
               connections, creating digital solutions that not only look
@@ -181,18 +182,14 @@ export default function AboutPage() {
                 key={index}
                 className="text-center bg-card rounded-xl p-6 border border-border"
               >
-                <div className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden">
-                  <img
+                <div className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden relative">
+                  <Image
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      // Fallback to initials if image fails to load
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      const fallback = target.nextElementSibling as HTMLElement;
-                      if (fallback) fallback.style.display = 'flex';
-                    }}
+                    fill
+                    className="object-cover"
+                    sizes="96px"
+                    loading="lazy"
                   />
                   <div className="w-full h-full bg-muted rounded-full flex items-center justify-center" style={{display: 'none'}}>
                     <span className="text-2xl font-bold text-trimax">

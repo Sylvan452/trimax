@@ -128,13 +128,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
   if (!post) {
     return {
-      title: 'Post Not Found - Trimax',
+      title: 'Post Not Found - Trimax Media',
       description: 'The requested blog post could not be found.',
     };
   }
 
   return {
-     title: post.seo?.title || `${post.title} - Trimax Blog`,
+     title: post.seo?.title || `${post.title} - Trimax Media Blog`,
      description: post.seo?.metaDesc || post.excerpt,
      keywords: post.seo?.metaKeywords || undefined,
      openGraph: {

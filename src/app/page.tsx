@@ -1,12 +1,30 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import ServiceCard from './components/ServiceCard';
-import BlogCard from './components/BlogCard';
-import HeroSection from './components/HeroSection';
 import { generateSeoMetadata } from './components/Seo';
 import { fetchPublicData } from '@/lib/api';
 import { GET_RECENT_POSTS } from '@/lib/queries';
+import { 
+  DynamicHeroSection,
+  createDynamicComponent
+} from './utils/dynamicImports';
+
+// Lazy load components that are not immediately visible with optimized loading
+const ServiceCard = createDynamicComponent(
+  () => import('./components/ServiceCard'),
+  { 
+    ssr: false,
+    minHeight: '256px'
+  }
+);
+
+const BlogCard = createDynamicComponent(
+  () => import('./components/BlogCard'),
+  { 
+    ssr: false,
+    minHeight: '192px'
+  }
+);
 
 // Interface for WordPress blog posts
 interface WordPressBlogPost {
@@ -42,9 +60,9 @@ async function getRecentBlogPosts(): Promise<WordPressBlogPost[]> {
 }
 
 export const metadata: Metadata = generateSeoMetadata({
-  title: 'Trimax - Digital Solutions & Web Development',
-  description:
-    'Transform your digital presence with Trimax. We create stunning websites, powerful web applications, and comprehensive digital solutions for modern businesses.',
+  title: 'Trimax Media - Digital Solutions & Web Development',
+    description:
+      'Transform your digital presence with Trimax Media. We create stunning websites, powerful web applications, and comprehensive digital solutions for modern businesses.',
   keywords: [
     'web development',
     'digital solutions',
@@ -153,7 +171,7 @@ export default async function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <HeroSection />
+      <DynamicHeroSection />
 
       {/* Stats Section */}
       <section className="py-20 bg-muted/30">
@@ -212,7 +230,7 @@ export default async function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Why Choose Trimax?
+                Why Choose Trimax Media?
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 We&apos;re not just developers – we&apos;re digital strategists
@@ -278,11 +296,16 @@ export default async function Home() {
             </div>
 
             <div className="relative">
-              <div className="w-full h-96 rounded-2xl overflow-hidden">
-                <img
+              <div className="w-full h-96 rounded-2xl overflow-hidden relative">
+                <Image
                   src="/team.jpg"
-                  alt="Trimax Team"
-                  className="w-full h-full object-cover"
+                  alt="Trimax Media Team"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                 />
               </div>
             </div>
@@ -332,6 +355,9 @@ export default async function Home() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                   />
                 </div>
                 <div className="space-y-2">
@@ -380,7 +406,7 @@ export default async function Home() {
                     excerpt="Stay updated with our latest insights and industry trends."
                     image={post.featuredImage?.node.sourceUrl}
                     author={{
-                      name: 'Trimax Team',
+                      name: 'Trimax Media Team',
                       avatar: '/team.jpg',
                     }}
                     publishedAt={new Date(post.date).toLocaleDateString()}
