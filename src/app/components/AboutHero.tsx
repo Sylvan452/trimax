@@ -6,8 +6,12 @@ import Image from 'next/image';
 
 export default function AboutHero() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // Set mounted state first
+    setIsMounted(true);
+    
     // Trigger animation on component mount
     const timer = setTimeout(() => {
       setIsVisible(true);
@@ -33,7 +37,7 @@ export default function AboutHero() {
           {/* Text Content - Left Column */}
           <div
             className={`space-y-8 transition-all duration-1000 ease-out ${
-              isVisible
+              isMounted && isVisible
                 ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-8'
             }`}
@@ -88,7 +92,7 @@ export default function AboutHero() {
                 <div
                   key={index}
                   className={`text-center transition-all duration-1000 ease-out ${
-                    isVisible
+                    isMounted && isVisible
                       ? 'opacity-100 translate-y-0'
                       : 'opacity-0 translate-y-4'
                   }`}
@@ -108,7 +112,7 @@ export default function AboutHero() {
           {/* Image - Right Column */}
           <div
             className={`relative transition-all duration-1000 ease-out ${
-              isVisible
+              isMounted && isVisible
                 ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-8'
             }`}
@@ -118,7 +122,7 @@ export default function AboutHero() {
               {/* Main Image Container */}
               <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                  src="/team.jpg"
                   alt="Team collaboration and innovation"
                   fill
                   className="object-cover"

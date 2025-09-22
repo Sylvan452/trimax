@@ -6,10 +6,17 @@ import { useEffect, useState } from 'react';
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // Set mounted state to prevent hydration mismatch
+    setIsMounted(true);
     // Trigger fade-in animation on component mount
-    setIsVisible(true);
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+    
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -34,7 +41,7 @@ export default function HeroSection() {
             {/* Main Headline with Fade-in Animation */}
             <h1 
               className={`text-4xl md:text-5xl xl:text-6xl font-bold leading-tight transition-all duration-1000 ease-out ${
-                isVisible 
+                isMounted && isVisible 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
               }`}
@@ -47,7 +54,7 @@ export default function HeroSection() {
             {/* Subtitle with Delayed Fade-in */}
             <p 
               className={`text-lg md:text-xl text-gray-200 leading-relaxed max-w-xl transition-all duration-1000 ease-out delay-300 ${
-                isVisible 
+                isMounted && isVisible 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
               }`}
@@ -58,7 +65,7 @@ export default function HeroSection() {
             {/* CTA Buttons with Delayed Fade-in */}
             <div 
               className={`flex flex-col sm:flex-row gap-4 transition-all duration-1000 ease-out delay-500 ${
-                isVisible 
+                isMounted && isVisible 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
               }`}
@@ -121,7 +128,7 @@ export default function HeroSection() {
             {/* Trust Indicators */}
             <div 
               className={`flex flex-wrap items-center gap-6 pt-4 transition-all duration-1000 ease-out delay-700 ${
-                isVisible 
+                isMounted && isVisible 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
               }`}
@@ -145,7 +152,7 @@ export default function HeroSection() {
           <div className="relative flex items-start justify-center">
             <div 
               className={`relative rounded-2xl overflow-hidden transition-all duration-1000 ease-out delay-300 ${
-                isVisible 
+                isMounted && isVisible 
                   ? 'opacity-100 translate-y-0 scale-100' 
                   : 'opacity-0 translate-y-8 scale-95'
               }`}
@@ -178,7 +185,7 @@ export default function HeroSection() {
       {/* Scroll Indicator */}
       <div 
         className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-1000 ease-out delay-1000 ${
-          isVisible 
+          isMounted && isVisible 
             ? 'opacity-100 translate-y-0' 
             : 'opacity-0 translate-y-4'
         }`}
