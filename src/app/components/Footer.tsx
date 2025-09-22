@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -46,7 +47,7 @@ export default function Footer() {
       },
       {
         name: 'Instagram',
-        href: 'https://www.instagram.com/trimaxfashion/',
+        href: 'https://www.instagram.com/trimaxmedia/',
         icon: (
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.618 5.367 11.986 11.988 11.986s11.987-5.368 11.987-11.986C24.014 5.367 18.635.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.297-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.807.875 1.297 2.026 1.297 3.323s-.49 2.448-1.297 3.323c-.875.807-2.026 1.297-3.323 1.297zm7.718-1.297c-.875.807-2.026 1.297-3.323 1.297s-2.448-.49-3.323-1.297c-.807-.875-1.297-2.026-1.297-3.323s.49-2.448 1.297-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.807.875 1.297 2.026 1.297 3.323s-.49 2.448-1.297 3.323z" />
@@ -62,13 +63,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-trimax rounded-lg flex items-center justify-center">
-                <span className="text-trimax-foreground font-bold text-lg">
-                  T
-                </span>
+            <Link href="/" className="flex items-center mb-4">
+              <div className="relative w-16 h-16">
+                <Image
+                  src="/Trimax_Media_Logo.png"
+                  alt="Trimax Media Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
-              <span className="text-xl font-bold text-foreground">Trimax</span>
             </Link>
             <p className="text-muted-foreground mb-4 max-w-md">
               A modern digital agency providing innovative solutions for your
@@ -129,7 +132,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} Trimax. All rights reserved.
+            © {currentYear} Trimax Media. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link

@@ -64,22 +64,22 @@ interface CategoriesData {
 
 // Generate metadata for the blog page
 export const metadata: Metadata = {
-  title: 'Blog | Trimax - Latest Insights & Updates',
-  description:
-    'Stay updated with the latest insights, tutorials, and industry news from Trimax. Explore our blog for expert tips and valuable content.',
-  keywords: 'blog, insights, tutorials, industry news, Trimax, updates',
-  openGraph: {
-    title: 'Blog | Trimax - Latest Insights & Updates',
+  title: 'Blog | Trimax Media - Latest Insights & Updates',
     description:
-      'Stay updated with the latest insights, tutorials, and industry news from Trimax.',
+      'Stay updated with the latest insights, tutorials, and industry news from Trimax Media. Explore our blog for expert tips and valuable content.',
+    keywords: 'blog, insights, tutorials, industry news, Trimax Media, updates',
+  openGraph: {
+      title: 'Blog | Trimax Media - Latest Insights & Updates',
+      description:
+        'Stay updated with the latest insights, tutorials, and industry news from Trimax Media.',
     type: 'website',
     url: '/blog',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog | Trimax - Latest Insights & Updates',
+    title: 'Blog | Trimax Media - Latest Insights & Updates',
     description:
-      'Stay updated with the latest insights, tutorials, and industry news from Trimax.',
+      'Stay updated with the latest insights, tutorials, and industry news from Trimax Media.',
   },
 };
 

@@ -4,17 +4,17 @@ import PortfolioGrid from '../components/PortfolioGrid';
 import { generateSeoMetadata } from '../components/Seo';
 
 export const metadata: Metadata = generateSeoMetadata({
-  title: 'Portfolio - Trimax',
+  title: 'Portfolio - Trimax Media',
   description:
     "Explore our portfolio of successful web development, design, and digital marketing projects. See how we've helped businesses achieve their goals.",
   keywords: [
     'portfolio',
     'web development projects',
     'design showcase',
-    'trimax work',
+    'trimax media work',
     'case studies',
   ],
-  url: 'https://trimax.com/portfolio',
+  url: 'https://trimax-media.com/portfolio',
 });
 
 export default function PortfolioPage() {
@@ -273,19 +273,19 @@ export default function PortfolioPage() {
             {[
               {
                 quote:
-                  'Trimax delivered an exceptional e-commerce platform that exceeded our expectations. The attention to detail and user experience is outstanding.',
+                  'Trimax Media delivered an exceptional e-commerce platform that exceeded our expectations. The attention to detail and user experience is outstanding.',
                 author: 'Jennifer Smith',
                 role: 'CEO, Fashion Forward',
               },
               {
                 quote:
-                  'The team at Trimax transformed our outdated website into a modern, responsive platform that has significantly improved our online presence.',
+                  'The team at Trimax Media transformed our outdated website into a modern, responsive platform that has significantly improved our online presence.',
                 author: 'Michael Johnson',
                 role: 'Marketing Director, TechCorp',
               },
               {
                 quote:
-                  'Working with Trimax was a pleasure. They understood our vision and delivered a mobile app that our users absolutely love.',
+                  'Working with Trimax Media was a pleasure. They understood our vision and delivered a mobile app that our users absolutely love.',
                 author: 'Sarah Davis',
                 role: 'Founder, FitLife',
               },

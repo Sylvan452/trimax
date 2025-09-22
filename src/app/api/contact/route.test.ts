@@ -17,8 +17,8 @@ beforeEach(() => {
     SMTP_PORT: '587',
     SMTP_USER: 'test@example.com',
     SMTP_PASS: 'testpass',
-    SMTP_FROM: 'noreply@trimax.com',
-    CONTACT_EMAIL: 'contact@trimax.com',
+    SMTP_FROM: 'noreply@trimax-media.com',
+    CONTACT_EMAIL: 'contact@trimax-media.com',
   }
 })
 
@@ -68,8 +68,8 @@ describe('/api/contact', () => {
         },
       })
       expect(mockSendMail).toHaveBeenCalledWith({
-        from: 'noreply@trimax.com',
-        to: 'contact@trimax.com',
+        from: 'noreply@trimax-media.com',
+      to: 'contact@trimax-media.com',
         subject: 'New Contact Form Submission from John Doe',
         html: expect.stringContaining('John Doe'),
         text: expect.stringContaining('John Doe'),

@@ -2,16 +2,28 @@ import { render, screen } from '@testing-library/react'
 import BlogCard, { FeaturedBlogCard, HorizontalBlogCard, MinimalBlogCard } from './BlogCard'
 
 // Mock Next.js components
+interface MockImageProps {
+  src: string;
+  alt: string;
+  [key: string]: unknown;
+}
+
+interface MockLinkProps {
+  href: string;
+  children: React.ReactNode;
+  [key: string]: unknown;
+}
+
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: ({ src, alt, ...props }: any) => (
-    <img src={src} alt={alt} {...props} />
+  default: ({ src, alt, ...props }: MockImageProps) => (
+    <div data-testid="mock-image" data-src={src} data-alt={alt} {...props} />
   ),
 }))
 
 jest.mock('next/link', () => ({
   __esModule: true,
-  default: ({ href, children, ...props }: any) => (
+  default: ({ href, children, ...props }: MockLinkProps) => (
     <a href={href} {...props}>
       {children}
     </a>

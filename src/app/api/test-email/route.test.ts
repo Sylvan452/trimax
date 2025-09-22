@@ -16,8 +16,8 @@ beforeEach(() => {
     SMTP_PORT: '587',
     SMTP_USER: 'test@example.com',
     SMTP_PASS: 'testpass',
-    SMTP_FROM: 'noreply@trimax.com',
-    CONTACT_EMAIL: 'contact@trimax.com',
+    SMTP_FROM: 'noreply@trimax-media.com',
+    CONTACT_EMAIL: 'contact@trimax-media.com',
   }
 })
 
@@ -50,8 +50,8 @@ describe('/api/test-email', () => {
         host: 'smtp.test.com',
         port: '587',
         user: 'test@example.com',
-        from: 'noreply@trimax.com',
-        to: 'contact@trimax.com',
+        from: 'noreply@trimax-media.com',
+      to: 'contact@trimax-media.com',
       })
 
       expect(mockNodemailer.createTransport).toHaveBeenCalledWith({
@@ -66,8 +66,8 @@ describe('/api/test-email', () => {
 
       expect(mockVerify).toHaveBeenCalled()
       expect(mockSendMail).toHaveBeenCalledWith({
-        from: 'noreply@trimax.com',
-        to: 'contact@trimax.com',
+        from: 'noreply@trimax-media.com',
+      to: 'contact@trimax-media.com',
         subject: 'Email Configuration Test',
         html: expect.stringContaining('Email Configuration Test'),
         text: expect.stringContaining('Email Configuration Test'),
@@ -166,7 +166,7 @@ describe('/api/test-email', () => {
       delete process.env.SMTP_USER
       delete process.env.SMTP_PASS
 
-      const response = await GET()
+      await GET()
 
       expect(mockNodemailer.createTransport).toHaveBeenCalledWith({
         host: 'smtp.test.com',

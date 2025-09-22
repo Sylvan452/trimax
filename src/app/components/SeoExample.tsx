@@ -6,7 +6,7 @@ import { generateMetadata, createBasicMetadata } from './SeoComponent';
 // Example 1: Basic usage with minimal props
 export const basicMetadata: Metadata = createBasicMetadata(
   'About Us',
-  'Learn more about Trimax and our mission to transform digital experiences.',
+  'Learn more about Trimax Media and our mission to transform digital experiences.',
   '/about'
 );
 
@@ -18,7 +18,7 @@ export const advancedMetadata: Metadata = generateMetadata({
   keywords: ['web development', 'web design', 'responsive design', 'SEO'],
   image: '/services-hero.jpg',
   type: 'website',
-  author: 'Trimax Development Team',
+  author: 'Trimax Media Development Team',
 });
 
 // Example 3: Blog post metadata
